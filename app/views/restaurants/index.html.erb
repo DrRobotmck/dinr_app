@@ -1,0 +1,12 @@
+<h1>herro</h1>
+
+<%= form_tag '/search', method: :get, remote: true do %>
+	<%= text_field_tag :zip_or_name %>
+	<%= submit_tag 'Search'%>
+<% end %>
+
+<div>
+	<div id="map" style="width:800px;height:400px;"></div>
+</div>
+
+<div id='restaurants'></div>

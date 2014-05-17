@@ -1,0 +1,21 @@
+<h1><%= @restaurant.name %></h1>
+<h4><%= @restaurant.address %>, <%= @restaurant.zip %></h4>
+<h4></h4>
+
+<h4><%= @boro[@restaurant.boro] %></h4>
+<span>Most Recent Grade: </span><h1><%= @restaurant.grade %></h1>
+
+<% if logged_in? && !current_user.restaurants.include?(@restaurant) %>
+	<%= link_to 'Favorite', '/favorite/'+ @restaurant.id.to_s, method: :post, remote: true, class: 'favorite_button'%>
+<% elsif logged_in? && current_user.restaurants.include?(@restaurant) %>
+	<%= link_to 'Unfavorite', '/unfavorite/'+ @restaurant.id.to_s, method: :post, remote: true, class: 'favorite_button' %>
+<% else %>
+	<h5>Login to favorite!</h5>
+<% end %>
+
+<h2>Recent Inspection Results:</h2>
+<% @inspection_results.each do |date, inspections| %>
+	<h4>Inspected on: <%= date %></h4>
+	<h3><%= inspections[0].score %> points</h3>
+	<%= render partial: 'inspections/inspection', locals: { inspections: inspections}%>
+<% end %>

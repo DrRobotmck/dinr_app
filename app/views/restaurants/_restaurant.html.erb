@@ -1,0 +1,9 @@
+<%= content_tag(:div, class: 'restaurant', id: dom_id(restaurant)) do %>
+
+<h1><%= restaurant.name %></h1>
+<h3><%= restaurant.address %></h3>
+<h3><%= restaurant.zip %></h3>
+
+<%= link_to "View", restaurant %>
+
+<% end %>

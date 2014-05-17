@@ -1,0 +1,7 @@
+var restaurantDiv = $('#restaurants');
+restaurantDiv.empty();
+console.log("hi")
+var allRestaurants = $("<%= j(render @restaurants) %>");
+
+console.log(allRestaurants)
+restaurantDiv.append(allRestaurants)
