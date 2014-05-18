@@ -1,6 +1,9 @@
 class RestaurantsController < ApplicationController
 
 	def index
+		if logged_in? && params[:code] 
+			Foursquare.make_request(params[:code], current_user)
+		end
 	end
 
 	def show

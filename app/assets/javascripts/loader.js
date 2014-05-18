@@ -11,3 +11,6 @@ function loader(){
     clearInterval(loader);
   },4000)  
 }
+
+loader();
+initializeMap();

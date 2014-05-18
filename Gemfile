@@ -39,8 +39,15 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 # Google Maps Gem
- gem 'gmaps4rails'
+  gem 'gmaps4rails'
 
+# Environment Variables
+  gem 'dotenv-rails', :groups => [:development, :test]
+# HTTParty
+  gem 'httparty'
+
+
+# Test suite
 group :test, :development do
   gem 'rspec-rails'
   gem 'pry-rails'
