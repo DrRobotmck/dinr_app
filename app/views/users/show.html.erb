@@ -1,1 +1,5 @@
 <%= render @user %>
+<%= render partial: 'restaurants/restaurant', collection: @user.restaurants %>
+
+<%= link_to "Edit", edit_user_path(@user),id: 'edit-button', remote: true  %>
+<div id="edit"></div>

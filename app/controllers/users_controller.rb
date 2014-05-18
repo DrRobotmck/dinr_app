@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :set_user, :authenticated?, :authorized?, only: [:show,:update,:destroy]
+	before_action :set_user, :authenticated?, :authorized?, only: [:show,:edit,:update,:destroy]
 
 	def show
 		@user
@@ -22,6 +22,11 @@ class UsersController < ApplicationController
 
 	def edit
 		@user
+
+		respond_to do |format|
+			format.html {redirect_to @user}
+			format.js {}
+		end
 	end
 	def update
 		if @user.update_attributes(user_params)

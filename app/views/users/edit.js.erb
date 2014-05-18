@@ -1,0 +1,4 @@
+var close = $('<span> close <span>').click(function(){
+  $(this).parent().empty();
+}).css('color','red')
+$("#edit").empty().append($("<%= j(render 'form')%>")).append(close);

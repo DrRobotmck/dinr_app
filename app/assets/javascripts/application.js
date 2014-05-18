@@ -14,5 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require underscore
-//= require map
+//= require gmaps/google
 //= require_tree .
+
+$(function(){
+  loader();
+  initializeMap();
+});
