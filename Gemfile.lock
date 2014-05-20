@@ -89,6 +89,7 @@ GEM
     multi_xml (0.5.5)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    oauth (0.4.7)
     pg (0.17.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
@@ -194,6 +195,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  oauth
   pg
   pry-rails
   rails (= 4.1.0)

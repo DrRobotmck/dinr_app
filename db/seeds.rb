@@ -24,17 +24,17 @@ def seed_me(hash, boro, geocoded)
 	geocode = geocoded
 	hash[boro].each do |camis,inspections|
 
-		## Seed the Restos
+		## Create a restaurant and add inspections to it.
+		## Catch restaurants without lat_long coordinates
 		# begin
-		# 	Restaurant.create(camis: inspections.first[0], name: inspections.first[1], address: inspections.first[3] + " " + inspections.first[4], zip: inspections.first[5], grade: inspections.first[12], boro: inspections.first[2], lat: geocode[inspections.first[0].to_sym][0], long: geocode[inspections.first[0].to_sym][1])
+		# 	new_resto = Restaurant.create(camis: inspections.first[0], name: inspections.first[1], address: inspections.first[3] + " " + inspections.first[4], zip: inspections.first[5], grade: inspections.first[12], boro: inspections.first[2], lat: geocode[inspections.first[0].to_sym][0], long: geocode[inspections.first[0].to_sym][1], phone: inspections.first[6])
 		# rescue
-		# 	Restaurant.create(camis: inspections.first[0], name: inspections.first[1], address: inspections.first[3] +" "+ inspections.first[4], zip: inspections.first[5], grade: inspections.first[12], boro: inspections.first[2], lat: 0.00, long: 0.00)
+		# 	new_resto = Restaurant.create(camis: inspections.first[0], name: inspections.first[1], address: inspections.first[3] +" "+ inspections.first[4], zip: inspections.first[5], grade: inspections.first[12], boro: inspections.first[2], lat: 0.00, long: 0.00)
 		# end
 
-		### Seed the inspections
-		inspections.each do |inspection|
-			Inspection.create(score: inspection[11].to_i, violation: inspection[10], inspected_on: inspection[8], restaurant_id: Restaurant.find_by(camis: inspection[0]).id)
-		end
+		# inspections.each do |inspection|
+		# 	Inspection.create(score: inspection[11].to_i, violation: inspection[10], inspected_on: inspection[8], restaurant_id: new_resto.id)
+		# end
 	end
 end
 

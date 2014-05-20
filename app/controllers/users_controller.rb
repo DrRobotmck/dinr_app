@@ -4,9 +4,6 @@ class UsersController < ApplicationController
 
 	def show
 		@user
-		if @user.access_token
-			@user_info = Foursquare.get_info(@user)
-		end
 	end
 
 	def new

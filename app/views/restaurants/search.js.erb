@@ -2,6 +2,25 @@ var restaurantDiv = $('#restaurants');
 restaurantDiv.empty();
 console.log("hi")
 var allRestaurants = $("<%= j(render @restaurants) %>");
-
-console.log(allRestaurants)
 restaurantDiv.append(allRestaurants)
+
+var restaurantObjectsArray = $('.restaurant').map(function(){ 
+  var latLong = $(this).data();
+  return latLong;
+});
+var markers = []
+$.each(restaurantObjectsArray, function(key){
+  markers.push({
+    "lat": restaurantObjectsArray[key].lat,
+    "lng": restaurantObjectsArray[key].long,
+    "picture": {
+      "url": "http://openmbta.org/images/map/PinDown1Green.png?1306943843",
+      "width":  24,
+      "height": 24
+    },
+    "infowindow": '<a href="restaurants/'+restaurantObjectsArray[key].id + '">' + restaurantObjectsArray[key].name + '</a>'
+  });
+});
+
+loader()
+var handler = initializeMap(markers)

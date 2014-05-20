@@ -44,7 +44,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Environment Variables
   gem 'dotenv-rails', :groups => [:development, :test]
 # HTTParty
+  gem 'oauth'
   gem 'httparty'
+
 
 
 # Test suite

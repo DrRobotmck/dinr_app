@@ -1,4 +1,11 @@
 <h1><%= @restaurant.name %></h1>
+<% if !@yelp_results %>
+  <h1>Sorry, no Yelp results for that one</h1>
+<% else %>
+  <h3>Rating: <%= @yelp_results['avg_rating']%></h3>
+  <img src='<%= @yelp_results['rating_img_url']%>'/>
+  <img src='<%= @yelp_results['image_url']%>' />
+<% end %>
 <h4><%= @restaurant.address %>, <%= @restaurant.zip %></h4>
 <h4></h4>
 
@@ -18,4 +25,17 @@
 	<h4>Inspected on: <%= date %></h4>
 	<h3><%= inspections[0].score %> points</h3>
 	<%= render partial: 'inspections/inspection', locals: { inspections: inspections}%>
+<% end %>
+
+<% if @yelp_results %>
+  <div id="review_list">
+  <h3>User Reviews</h3>
+  <% @yelp_results['reviews'].each do |review| %>
+    <div class="review">
+      <h4>User Rating: <%= review['rating']%></h4>
+      <img src='<%= review['rating_img_url_small']%>' alt="">
+      <p><%= review['text_excerpt'] %><h6>By: <%=review['user_name']%></h6></p>
+    </div>
+  <% end %>
+  </div>
 <% end %>
