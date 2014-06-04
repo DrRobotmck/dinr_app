@@ -1,3 +1,1 @@
-<% inspections.each do |inspection| %>
-<h5><%= inspection.violation %></h5>
-<% end %>
+<h5><%= inspections.map{|inspection| inspection.violation}.join(" | ") %></h5>

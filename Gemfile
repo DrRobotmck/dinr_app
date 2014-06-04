@@ -61,3 +61,5 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
 end
+
+gem 'geocoder'

@@ -15,4 +15,15 @@
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
-//= require_tree 
+//= require_tree .
+
+$(function(){
+
+$('#restaurants').css('height',$(window).height())
+$(window).scroll(function(event){
+  console.log('hi')
+  $('#map-div').css('top',$(this).scrollTop());
+  $('#nav').css('top',$(this).scrollTop());
+  $('#search').css('top',$(this).scrollTop());  
+})
+})

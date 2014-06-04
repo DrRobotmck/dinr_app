@@ -1,8 +1,7 @@
-<%= content_tag(:div, class: 'restaurant', id: dom_id(restaurant), data: {id: restaurant.id, name: restaurant.name, lat: restaurant.lat, long: restaurant.long }) do %>
+<%= content_tag(:div, class: 'restaurant panel', id: dom_id(restaurant), data: {id: restaurant.id, name: restaurant.name, lat: restaurant.lat, long: restaurant.long }) do %>
 
-<h1><%= restaurant.name %></h1>
-<h3><%= restaurant.address %></h3>
-<h3><%= restaurant.zip %></h3>
+<h4><%= restaurant.name %></h4>
+<h6><%= restaurant.address %> <%= restaurant.zip %></h6>
 
 <%= link_to "View", restaurant %>
 

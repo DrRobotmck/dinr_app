@@ -2,10 +2,22 @@ body{
 	font-family: Verdana;
 }
 .restaurant{
-	width: 300px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	margin: 2px;
-	border: 1px solid black;
+  border-radius: 0 20px 0 20px;
 	float: left;
 	text-align: center;
+  background: rgba(0,0,0,.4);
+  color: white;
+}
+.restaurant h4, .restaurant h6, .restaurant a{
+  color:white;
+}
+
+.restaurant:hover{
+  background: rgba(0,0,0,.8);
+}
+
+#main{
 }

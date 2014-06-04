@@ -2,21 +2,22 @@ function initializeMap(markers){
   var handler = Gmaps.build('Google');
   var location;
   var markers = markers;
-  setTimeout(function(){ mapGenerator(markers) },4000);
+  setTimeout(function(){ 
+    mapGenerator(markers);
+    $('#restaurants').show(2000);
+  },4000);
 
   navigator.geolocation.getCurrentPosition(function(result){
-    location = result.coords
-    console.log('hi',location)
+    location = result.coords;
   });
 
   function mapGenerator(markers){
-    console.log(markers)
     handler.buildMap({provider: {
       zoom: 13,
       center: new google.maps.LatLng(location.latitude, location.longitude),
       styles: styles
     }, internal: {id: 'map'}}, function(){
-      handler.addMarkers(markers)
+      handler.addMarkers(markers);
     });
   }
 
