@@ -1,6 +1,9 @@
 class RestaurantsController < ApplicationController
 
 	def index
+		ip_results = Geocoder.search(request.ip)[0].data
+		session[:ip_address] = [ip_results['latitude'], ip_results['longitude']]
+		p session[:ip_address]
 	end
 
 	def show
@@ -12,7 +15,7 @@ class RestaurantsController < ApplicationController
 
 	def search
 		@restaurants = Restaurant.search(params[:zip_or_name])
-		@testaurant = @restaurant.to_json
+		@restaurant_coords = session[:ip_address]
 		respond_to do |format|
 			format.js {}
 		end

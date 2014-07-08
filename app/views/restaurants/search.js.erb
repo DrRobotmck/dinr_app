@@ -2,7 +2,6 @@ var restaurantDiv = $('#restaurants').hide();
 restaurantDiv.empty();
 var allRestaurants = $("<%= j(render @restaurants) %>");
 restaurantDiv.append(allRestaurants)
-
 var restaurantObjectsArray = $('.restaurant').map(function(){ 
   var latLong = $(this).data();
   return latLong;
@@ -20,6 +19,6 @@ $.each(restaurantObjectsArray, function(key){
     "infowindow": '<a href="restaurants/'+restaurantObjectsArray[key].id + '">' + restaurantObjectsArray[key].name + '</a>'
   });
 });
-
-loader();
-var handler = initializeMap(markers);
+var centerCoords = [<%= @restaurant_coords[0] %>, <%= @restaurant_coords[1] %>];
+// loader();
+var handler = initializeMap(markers, centerCoords);
