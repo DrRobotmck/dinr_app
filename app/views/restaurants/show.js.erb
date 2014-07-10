@@ -1,0 +1,11 @@
+
+var modal = $('#restaurant_modal').empty().hide();
+console.log('hi');
+var restaurant_info = $("<%= j(render partial: 'restaurants/show', locals: {restaurant: @restaurant, boro: @boro, inspection_results: @inspection_results, yelp_results: @yelp_results}) %>");
+modal.append(restaurant_info)
+
+modal.fadeIn(500);
+
+modal.click(function(){
+  $(this).hide();
+})

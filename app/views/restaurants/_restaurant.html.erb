@@ -3,6 +3,6 @@
 <h4><%= restaurant.name %></h4>
 <h6><%= restaurant.address %> <%= restaurant.zip %></h6>
 
-<%= link_to "View", restaurant %>
+<%= link_to "View", restaurant, remote: :true %>
 
 <% end %>

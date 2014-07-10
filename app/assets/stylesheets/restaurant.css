@@ -21,3 +21,15 @@ body{
 
 #main{
 }
+
+#restaurant_modal{
+  position: fixed;
+  z-index: 50;
+  top: 90px;
+  color: white;
+}
+
+.restaurant_modal_div{
+  border: 2px solid white;
+  background: rgba(0,0,0,.5);
+}

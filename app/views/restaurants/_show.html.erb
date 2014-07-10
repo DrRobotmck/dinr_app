@@ -1,0 +1,53 @@
+<%= content_tag(:div, class: 'restaurant_modal_div', id: dom_id(restaurant)) do %>
+  <div class='row'>
+    <div class='small-6 column'>
+    <h1><%= restaurant.name %></h1>
+    <div class='panel'>
+      <% if !yelp_results %>
+      <h1>Sorry, no Yelp results for that one</h1>
+      <% else %>
+      <h3>Rating: <%= yelp_results['avg_rating']%></h3>
+      <%= image_tag yelp_results['rating_img_url'] %>
+      <%= image_tag yelp_results['image_url']%>
+      <% end %>
+    </div>
+    <h4><%= restaurant.address %>, <%= restaurant.zip %></h4>
+    <h4></h4>
+
+    <h4><%= boro[restaurant.boro] %></h4>
+    <span>Most Recent Grade: </span><h1><%= restaurant.grade %></h1>
+  </div>
+
+  <% if logged_in? && !current_user.restaurants.include?(restaurant) %>
+    <%= link_to 'Favorite', '/favorite/'+ restaurant.id.to_s, method: :post, remote: true, class: 'favorite_button'%>
+  <% elsif logged_in? && current_user.restaurants.include?(restaurant) %>
+    <%= link_to 'Unfavorite', '/unfavorite/'+ restaurant.id.to_s, method: :post, remote: true, class: 'favorite_button' %>
+  <% else %>
+    <h5>Login to favorite!</h5>
+  <% end %>
+
+  <div class='small-6 column'>
+    <h2>Recent Inspection Results:</h2>
+    <% inspection_results.each do |date, inspections| %>
+      <h4>Inspected on: <%= date %></h4>
+      <h3><%= inspections[0].score %> points</h3>
+      <%= render partial: 'inspections/inspection', locals: { inspections: inspections}%>
+    <% end %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <% if yelp_results %>
+      <div id="review_list">
+        <h3>User Reviews</h3>
+        <% yelp_results['reviews'].each do |review| %>
+        <div class="review small-12 column">
+          <h4>User Rating: <%= review['rating']%></h4>
+          <%= image_tag review['rating_img_url_small']%>
+          <p><%= review['text_excerpt'] %><h6>By: <%=review['user_name']%></h6></p>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
