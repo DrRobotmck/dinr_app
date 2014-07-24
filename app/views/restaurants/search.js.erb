@@ -16,7 +16,7 @@ $.each(restaurantObjectsArray, function(key){
       "width":  24,
       "height": 24
     },
-    "infowindow": '<a href="restaurants/'+restaurantObjectsArray[key].id + '">' + restaurantObjectsArray[key].name + '</a>'
+    "infowindow": '<a data-remote=true href="restaurants/'+restaurantObjectsArray[key].id + '">' + restaurantObjectsArray[key].name + '</a>'
   });
 });
 var centerCoords = [<%= @restaurant_coords[0] %>, <%= @restaurant_coords[1] %>];

@@ -8,14 +8,20 @@ class RestaurantsController < ApplicationController
 	def show
 		@restaurant = Restaurant.find(params[:id])
 		@yelp_results = Yelp.search(@restaurant)
-		@inspection_results = Inspection.where(restaurant_id: @restaurant.id).group_by(&:inspected_on)
-		@boro = { '1' => 'Manhattan', '2' => 'Bronx', '3' => 'Brooklyn', '4' => 'Queens', '5' => 'Staten Island'}
+		@inspection_results = Inspection.where(restaurant_id: @restaurant.id)
+																		.group_by(&:inspected_on)
+		@boro = { '1' => 'Manhattan',
+						  '2' => 'Bronx', 
+						  '3' => 'Brooklyn', 
+						  '4' => 'Queens', 
+						  '5' => 'Staten Island'
+						}
 		respond_to { |format| format.js {} }
 	end
 
 	def search
 		@restaurants = Restaurant.search(params[:zip_or_name])
-		@restaurant_coords = session[:ip_address]
+		@restaurant_coords = session[:ip_address] = [40.7293373,-73.9458161]
 		respond_to { |format| format.js {} }
 	end
 

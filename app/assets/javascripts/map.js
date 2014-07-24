@@ -4,7 +4,7 @@ function initializeMap(markers, center){
   var markers = markers;
   mapGenerator(markers, center);
   console.log(center)
-  $('#restaurants').show(2000);
+  $('#restaurants').show();
 
   function mapGenerator(markers, center){
     handler.buildMap({provider: {
@@ -17,70 +17,66 @@ function initializeMap(markers, center){
   }
 }
 
-
-
 var styles = [
-{
-  "featureType": "landscape",
-  "stylers": [
   {
-    "lightness": 16
+    "featureType": "landscape",
+    "stylers": [
+    {
+      "lightness": 16
+    },
+    {
+      "hue": "#ff001a"
+    },
+    {
+      "saturation": -61
+    }
+    ]
   },
   {
-    "hue": "#ff001a"
+    "featureType": "road.highway",
+    "stylers": [
+    {
+      "hue": "#ff0011"
+    },
+    {
+      "lightness": 53
+    }
+    ]
   },
   {
-    "saturation": -61
-  }
-  ]
-},
-{
-  "featureType": "road.highway",
-  "stylers": [
-  {
-    "hue": "#ff0011"
+    "featureType": "poi.park",
+    "stylers": [
+    {
+      "hue": "#00ff91"
+    }
+    ]
   },
   {
-    "lightness": 53
-  }
-  ]
-},
-{
-  "featureType": "poi.park",
-  "stylers": [
-  {
-    "hue": "#00ff91"
-  }
-  ]
-},
-{
-  "elementType": "labels",
-  "stylers": [
-  {
-    "lightness": 63
+    "elementType": "labels",
+    "stylers": [
+    {
+      "lightness": 63
+    },
+    {
+      "hue": "#ff0000"
+    }
+    ]
   },
   {
-    "hue": "#ff0000"
-  }
-  ]
-},
-{
-  "featureType": "water",
-  "stylers": [
+    "featureType": "water",
+    "stylers": [
+    {
+      "hue": "#0055ff"
+    }
+    ]
+  },
   {
-    "hue": "#0055ff"
+    "featureType": "road",
+    "elementType": "labels",
+    "stylers": [
+    {
+      "visibility": "off"
+    }
+    ]
   }
-  ]
-},
-{
-  "featureType": "road",
-  "elementType": "labels",
-  "stylers": [
-  {
-    "visibility": "off"
-  }
-  ]
-}
 ]
-
-// initializeMap();

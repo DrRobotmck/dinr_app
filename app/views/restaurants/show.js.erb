@@ -4,8 +4,8 @@ console.log('hi');
 var restaurant_info = $("<%= j(render partial: 'restaurants/show', locals: {restaurant: @restaurant, boro: @boro, inspection_results: @inspection_results, yelp_results: @yelp_results}) %>");
 modal.append(restaurant_info)
 
-modal.fadeIn(500);
+modal.show(500);
 
-modal.click(function(){
-  $(this).hide();
+modal.find('#close').click(function(){
+  modal.hide(500);
 })

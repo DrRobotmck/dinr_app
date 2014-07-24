@@ -1,35 +1,70 @@
 body{
-	font-family: Verdana;
+	font-family: Lato;
+  font-weight: 300;
+  height: 100%;
 }
 .restaurant{
-	width: 150px;
-	height: 150px;
-	margin: 2px;
+  width: 300px;
+  height: 150px;
+  margin: 2px;
   border-radius: 0 20px 0 20px;
-	float: left;
-	text-align: center;
-  background: rgba(0,0,0,.4);
+  text-align: center;
+  background-color: rgba(150,150,150,.4);
+  border-color: rgba(0,0,0,.8);
   color: white;
+  overflow-x: hidden;
 }
 .restaurant h4, .restaurant h6, .restaurant a{
-  color:white;
+  color: white;
+}
+#restaurants {
+  border: 1px solid black;
+  overflow: scroll;
+  height: 400px;
 }
 
 .restaurant:hover{
-  background: rgba(0,0,0,.8);
+  background: rgba(150,150,150,.8);
+  border-color: rgba(0,0,0,.8);
 }
 
-#main{
+#top-nav{
+  background: rgba(150,150,150,.4);
+  height: 52px;
+}
+#search input{
+  height: 52px;
+  background-color: rgba(150,150,150,.1);
+  color: white;
+  /*border: 1px solid rgba(150,150,150,.2);*/
+  border: none;
+}
+#search input.submit:hover{
+  color: cornsilk;
+}
+#nav .button {
+  width: 49%;
+}
+#search input.submit {
+  background: rgba(0,0,0,0)
 }
 
 #restaurant_modal{
+  margin:0 184px;
   position: fixed;
   z-index: 50;
-  top: 90px;
+  top: 123px;
+  color: white;
+  overflow: scroll;
+}
+#restaurant_modal h1, h2, h3, h4, span, p {
   color: white;
 }
 
 .restaurant_modal_div{
   border: 2px solid white;
-  background: rgba(0,0,0,.5);
+  background: rgba(150,150,150,.8);
+}
+.button {
+  background: none;
 }

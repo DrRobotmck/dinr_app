@@ -1,6 +1,5 @@
-
 # User.destroy_all
-# Restaurant.destroy_all
+Restaurant.destroy_all
 
 def uniq_camis(boro)
 	camis = []
@@ -24,17 +23,17 @@ def seed_me(hash, boro, geocoded)
 	geocode = geocoded
 	hash[boro].each do |camis,inspections|
 
-		## Create a restaurant and add inspections to it.
-		## Catch restaurants without lat_long coordinates
-		# begin
-		# 	new_resto = Restaurant.create(camis: inspections.first[0], name: inspections.first[1], address: inspections.first[3] + " " + inspections.first[4], zip: inspections.first[5], grade: inspections.first[12], boro: inspections.first[2], lat: geocode[inspections.first[0].to_sym][0], long: geocode[inspections.first[0].to_sym][1], phone: inspections.first[6])
-		# rescue
-		# 	new_resto = Restaurant.create(camis: inspections.first[0], name: inspections.first[1], address: inspections.first[3] +" "+ inspections.first[4], zip: inspections.first[5], grade: inspections.first[12], boro: inspections.first[2], lat: 0.00, long: 0.00)
-		# end
+		# Create a restaurant and add inspections to it.
+		# Catch restaurants without lat_long coordinates
+		begin
+			new_resto = Restaurant.create(camis: inspections.first[0], name: inspections.first[1], address: inspections.first[3] + " " + inspections.first[4], zip: inspections.first[5], grade: inspections.first[12], boro: inspections.first[2], lat: geocode[inspections.first[0].to_sym][0], long: geocode[inspections.first[0].to_sym][1], phone: inspections.first[6])
+		rescue
+			new_resto = Restaurant.create(camis: inspections.first[0], name: inspections.first[1], address: inspections.first[3] +" "+ inspections.first[4], zip: inspections.first[5], grade: inspections.first[12], boro: inspections.first[2], lat: 0.00, long: 0.00)
+		end
 
-		# inspections.each do |inspection|
-		# 	Inspection.create(score: inspection[11].to_i, violation: inspection[10], inspected_on: inspection[8], restaurant_id: new_resto.id)
-		# end
+		inspections.each do |inspection|
+			Inspection.create(score: inspection[11].to_i, violation: inspection[10], inspected_on: inspection[8], restaurant_id: new_resto.id)
+		end
 	end
 end
 
@@ -43,7 +42,7 @@ brooklyn = []
 queens = []
 bronx = []
 staten = []
-read_in = File.new("/Users/macadocious/Development/dinr_app/seeders/WebExtract.txt", "r")
+read_in = File.open( File.join( File.dirname(__FILE__),"seeders/WebExtract.txt"), "r")
 read_in.each do |line|
 
 	b = line.split("\",\"")
@@ -86,7 +85,7 @@ add_by_camis(rest_hash,:queens,queens)
 add_by_camis(rest_hash,:staten,staten)
 
 geocode = {}
-long_lat = File.open("/Users/macadocious/Development/dinr_app/seeders/latlong.csv","r")
+long_lat = File.open( File.join(File.dirname(__FILE__),"seeders/latlong.csv"),"r")
 long_lat.each do |one|
 	split_up = one.split(",")
 	geocode[split_up[0].to_sym] = [split_up[4],split_up[5].gsub("\n","")]

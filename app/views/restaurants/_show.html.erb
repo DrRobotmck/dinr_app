@@ -1,7 +1,7 @@
 <%= content_tag(:div, class: 'restaurant_modal_div', id: dom_id(restaurant)) do %>
   <div class='row'>
     <div class='small-6 column'>
-    <h1><%= restaurant.name %></h1>
+    <h1><span id='close'> X </span> <%= restaurant.name %></h1>
     <div class='panel'>
       <% if !yelp_results %>
       <h1>Sorry, no Yelp results for that one</h1>
