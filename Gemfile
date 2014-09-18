@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
@@ -28,6 +28,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'rails-assets-underscore'
+gem 'rails-assets-angular'
+gem 'rails-assets-handlebars'
+group :development do
+  gem 'meta_request'
+end
 
 # Use unicorn as the app server
 # gem 'unicorn'
